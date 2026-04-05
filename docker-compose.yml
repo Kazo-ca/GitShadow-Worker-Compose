@@ -1,0 +1,120 @@
+services:
+  # Le "Cerveau" : maintient la version cachée à jour
+  git-proxy:
+    image: hownetworks/git-cache-http-proxy
+    volumes:
+      - git_cache:/cache
+    environment:
+      - PORT=8080
+    restart: always
+
+  # Les "Action Workers" (tu peux en mettre plusieurs)
+  runner-1:
+    image: myoung34/github-runner:latest
+    environment:
+      - RUNNER_SCOPE=org
+      - ORG_NAME={ORG_NAME}
+      - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RANDOM_RUNNER_SUFFIX=true
+      - LABELS=tower,linux
+      - REPO_URL=https://github.com/ton-org/ton-repo
+      # - RUNNER_NAME=worker-abitibi-1
+      - ACCESS_TOKEN=${GH_TOKEN}
+      # L'astuce pour la transparence :
+      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    depends_on:
+      - git-proxy
+  runner-2:
+    image: myoung34/github-runner:latest
+    environment:
+      - RUNNER_SCOPE=org
+      - ORG_NAME={ORG_NAME}
+      - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RANDOM_RUNNER_SUFFIX=true
+      - LABELS=tower,linux
+      - REPO_URL=https://github.com/ton-org/ton-repo
+      # - RUNNER_NAME=worker-abitibi-1
+      - ACCESS_TOKEN=${GH_TOKEN}
+      # L'astuce pour la transparence :
+      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    depends_on:
+      - git-proxy
+  runner-3:
+    image: myoung34/github-runner:latest
+    environment:
+      - RUNNER_SCOPE=org
+      - ORG_NAME={ORG_NAME}
+      - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RANDOM_RUNNER_SUFFIX=true
+      - LABELS=tower,linux
+      - REPO_URL=https://github.com/ton-org/ton-repo
+      # - RUNNER_NAME=worker-abitibi-1
+      - ACCESS_TOKEN=${GH_TOKEN}
+      # L'astuce pour la transparence :
+      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    depends_on:
+      - git-proxy
+  runner-4:
+    image: myoung34/github-runner:latest
+    environment:
+      - RUNNER_SCOPE=org
+      - ORG_NAME={ORG_NAME}
+      - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RANDOM_RUNNER_SUFFIX=true
+      - LABELS=tower,linux
+      - REPO_URL=https://github.com/ton-org/ton-repo
+      # - RUNNER_NAME=worker-abitibi-1
+      - ACCESS_TOKEN=${GH_TOKEN}
+      # L'astuce pour la transparence :
+      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    depends_on:
+      - git-proxy
+  runner-5:
+    image: myoung34/github-runner:latest
+    environment:
+      - RUNNER_SCOPE=org
+      - ORG_NAME={ORG_NAME}
+      - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RANDOM_RUNNER_SUFFIX=true
+      - LABELS=tower,linux
+      - REPO_URL=https://github.com/ton-org/ton-repo
+      # - RUNNER_NAME=worker-abitibi-1
+      - ACCESS_TOKEN=${GH_TOKEN}
+      # L'astuce pour la transparence :
+      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    depends_on:
+      - git-proxy
+  runner-6:
+    image: myoung34/github-runner:latest
+    environment:
+      - RUNNER_SCOPE=org
+      - ORG_NAME={ORG_NAME}
+      - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RANDOM_RUNNER_SUFFIX=true
+      - LABELS=tower,linux
+      - REPO_URL=https://github.com/ton-org/ton-repo
+      # - RUNNER_NAME=worker-abitibi-1
+      - ACCESS_TOKEN=${GH_TOKEN}
+      # L'astuce pour la transparence :
+      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    depends_on:
+      - git-proxy
+  runner-7:
+    image: myoung34/github-runner:latest
+    environment:
+      - RUNNER_SCOPE=org
+      - ORG_NAME={ORG_NAME}
+      - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RANDOM_RUNNER_SUFFIX=true
+      - LABELS=tower,linux
+      - REPO_URL=https://github.com/ton-org/ton-repo
+      # - RUNNER_NAME=worker-abitibi-1
+      - ACCESS_TOKEN=${GH_TOKEN}
+      # L'astuce pour la transparence :
+      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    depends_on:
+      - git-proxy
+
+
+volumes:
+  git_cache:
