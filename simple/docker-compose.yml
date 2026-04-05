@@ -15,6 +15,7 @@ services:
       - RUNNER_SCOPE=org
       - ORG_NAME=${ORG_NAME}
       - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RUNNER_GROUP=${RUNNER_GROUP}
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
@@ -29,6 +30,7 @@ services:
       - RUNNER_SCOPE=org
       - ORG_NAME=${ORG_NAME}
       - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RUNNER_GROUP=${RUNNER_GROUP}
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
@@ -43,6 +45,7 @@ services:
       - RUNNER_SCOPE=org
       - ORG_NAME=${ORG_NAME}
       - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RUNNER_GROUP=${RUNNER_GROUP}
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
@@ -57,6 +60,7 @@ services:
       - RUNNER_SCOPE=org
       - ORG_NAME=${ORG_NAME}
       - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RUNNER_GROUP=${RUNNER_GROUP}
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
@@ -71,6 +75,7 @@ services:
       - RUNNER_SCOPE=org
       - ORG_NAME=${ORG_NAME}
       - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RUNNER_GROUP=${RUNNER_GROUP}
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
@@ -85,6 +90,7 @@ services:
       - RUNNER_SCOPE=org
       - ORG_NAME=${ORG_NAME}
       - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RUNNER_GROUP=${RUNNER_GROUP}
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
@@ -99,6 +105,7 @@ services:
       - RUNNER_SCOPE=org
       - ORG_NAME=${ORG_NAME}
       - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RUNNER_GROUP=${RUNNER_GROUP}
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
