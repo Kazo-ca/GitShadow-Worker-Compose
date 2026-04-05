@@ -16,14 +16,13 @@ services:
       - ORG_NAME=${ORG_NAME}
       - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
       - RANDOM_RUNNER_SUFFIX=true
-      - LABELS=tower,linux
-      - REPO_URL=https://github.com/ton-org/ton-repo
-      # - RUNNER_NAME=worker-abitibi-1
+      - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      # L'astuce pour la transparence :
       - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
     depends_on:
       - git-proxy
+    restart: unless-stopped
+
   runner-2:
     image: myoung34/github-runner:latest
     environment:
@@ -31,14 +30,13 @@ services:
       - ORG_NAME=${ORG_NAME}
       - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
       - RANDOM_RUNNER_SUFFIX=true
-      - LABELS=tower,linux
-      - REPO_URL=https://github.com/ton-org/ton-repo
-      # - RUNNER_NAME=worker-abitibi-1
+      - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      # L'astuce pour la transparence :
       - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
     depends_on:
       - git-proxy
+    restart: unless-stopped
+
   runner-3:
     image: myoung34/github-runner:latest
     environment:
@@ -46,14 +44,13 @@ services:
       - ORG_NAME=${ORG_NAME}
       - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
       - RANDOM_RUNNER_SUFFIX=true
-      - LABELS=tower,linux
-      - REPO_URL=https://github.com/ton-org/ton-repo
-      # - RUNNER_NAME=worker-abitibi-1
+      - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      # L'astuce pour la transparence :
       - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
     depends_on:
       - git-proxy
+    restart: unless-stopped
+
   runner-4:
     image: myoung34/github-runner:latest
     environment:
@@ -61,14 +58,13 @@ services:
       - ORG_NAME=${ORG_NAME}
       - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
       - RANDOM_RUNNER_SUFFIX=true
-      - LABELS=tower,linux
-      - REPO_URL=https://github.com/ton-org/ton-repo
-      # - RUNNER_NAME=worker-abitibi-1
+      - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      # L'astuce pour la transparence :
       - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
     depends_on:
       - git-proxy
+    restart: unless-stopped
+
   runner-5:
     image: myoung34/github-runner:latest
     environment:
@@ -76,14 +72,13 @@ services:
       - ORG_NAME=${ORG_NAME}
       - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
       - RANDOM_RUNNER_SUFFIX=true
-      - LABELS=tower,linux
-      - REPO_URL=https://github.com/ton-org/ton-repo
-      # - RUNNER_NAME=worker-abitibi-1
+      - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      # L'astuce pour la transparence :
       - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
     depends_on:
       - git-proxy
+    restart: unless-stopped
+
   runner-6:
     image: myoung34/github-runner:latest
     environment:
@@ -91,14 +86,13 @@ services:
       - ORG_NAME=${ORG_NAME}
       - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
       - RANDOM_RUNNER_SUFFIX=true
-      - LABELS=tower,linux
-      - REPO_URL=https://github.com/ton-org/ton-repo
-      # - RUNNER_NAME=worker-abitibi-1
+      - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      # L'astuce pour la transparence :
       - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
     depends_on:
       - git-proxy
+    restart: unless-stopped
+
   runner-7:
     image: myoung34/github-runner:latest
     environment:
@@ -106,15 +100,12 @@ services:
       - ORG_NAME=${ORG_NAME}
       - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
       - RANDOM_RUNNER_SUFFIX=true
-      - LABELS=tower,linux
-      - REPO_URL=https://github.com/ton-org/ton-repo
-      # - RUNNER_NAME=worker-abitibi-1
+      - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      # L'astuce pour la transparence :
       - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
     depends_on:
       - git-proxy
-
+    restart: unless-stopped
 
 volumes:
   git_cache:

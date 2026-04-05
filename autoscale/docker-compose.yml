@@ -1,0 +1,52 @@
+services:
+  # Le "Cerveau" : cache git partagé
+  git-proxy:
+    image: hownetworks/git-cache-http-proxy
+    volumes:
+      - git_cache:/cache
+    environment:
+      - PORT=8080
+    restart: always
+
+  # Runner template unique — sera scalé dynamiquement par l'autoscaler
+  runner:
+    image: myoung34/github-runner:latest
+    environment:
+      - RUNNER_SCOPE=org
+      - ORG_NAME=${ORG_NAME}
+      - RUNNER_NAME_PREFIX=${RUNNER_PREFIX}
+      - RANDOM_RUNNER_SUFFIX=true
+      - LABELS=${RUNNER_LABELS:-tower,linux}
+      - ACCESS_TOKEN=${GH_TOKEN}
+      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    depends_on:
+      - git-proxy
+    restart: unless-stopped
+    deploy:
+      replicas: ${MIN_RUNNERS:-2}
+
+  # L'autoscaler : surveille l'API GitHub et scale les runners
+  autoscaler:
+    build: ./autoscaler
+    environment:
+      - GH_TOKEN=${GH_TOKEN}
+      - ORG_NAME=${ORG_NAME}
+      - RUNNER_LABELS=${RUNNER_LABELS:-tower,linux}
+      - MIN_RUNNERS=${MIN_RUNNERS:-2}
+      - MAX_RUNNERS=${MAX_RUNNERS:-10}
+      - MIN_IDLE=${MIN_IDLE:-1}
+      - CHECK_INTERVAL=${CHECK_INTERVAL:-30}
+      - COMPOSE_PROJECT=gitshadow-autoscale
+      - RUNNER_SERVICE=runner
+    volumes:
+      # Accès au Docker socket pour pouvoir scaler les runners
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Le compose file pour que l'autoscaler puisse appeler docker compose
+      - ./docker-compose.yml:/app/docker-compose.yml:ro
+      - ./.env:/app/.env:ro
+    depends_on:
+      - runner
+    restart: unless-stopped
+
+volumes:
+  git_cache:
