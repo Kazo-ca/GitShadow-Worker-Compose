@@ -1,0 +1,33 @@
+services:
+  # Le "Cerveau" : cache git partagé
+  git-proxy:
+    image: hownetworks/git-cache-http-proxy
+    volumes:
+      - git_cache:/cache
+    environment:
+      - PORT=8080
+    restart: always
+
+  # L'autoscaler : crée/supprime des runners avec workdir isolé (DooD)
+  autoscaler:
+    build: ./autoscaler
+    environment:
+      - GH_TOKEN=${GH_TOKEN}
+      - ORG_NAME=${ORG_NAME}
+      - RUNNER_PREFIX=${RUNNER_PREFIX}
+      - RUNNER_GROUP=${RUNNER_GROUP}
+      - RUNNER_LABELS=${RUNNER_LABELS:-tower,linux}
+      - MIN_RUNNERS=${MIN_RUNNERS:-2}
+      - MAX_RUNNERS=${MAX_RUNNERS:-10}
+      - MIN_IDLE=${MIN_IDLE:-1}
+      - CHECK_INTERVAL=${CHECK_INTERVAL:-30}
+      - COMPOSE_PROJECT=gitshadow-autoscale-dood
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./.env:/app/.env:ro
+    depends_on:
+      - git-proxy
+    restart: unless-stopped
+
+volumes:
+  git_cache:
