@@ -1,12 +1,12 @@
 services:
   # Le "Cerveau" : maintient la version cachée à jour
-  git-proxy:
-    image: hownetworks/git-cache-http-proxy
-    volumes:
-      - git_cache:/cache
-    environment:
-      - PORT=8080
-    restart: always
+  # git-proxy:
+  #   image: hownetworks/git-cache-http-proxy
+  #   volumes:
+  #     - git_cache:/cache
+  #   environment:
+  #     - PORT=8080
+  #   restart: always
 
   # Les "Action Workers" (tu peux en mettre plusieurs)
   runner-1:
@@ -19,9 +19,9 @@ services:
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
-    depends_on:
-      - git-proxy
+    #  - GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    #depends_on:
+   #   - git-proxy
     restart: unless-stopped
 
   runner-2:
@@ -34,9 +34,9 @@ services:
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
-    depends_on:
-      - git-proxy
+    #  - GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    #depends_on:
+    #  - git-proxy
     restart: unless-stopped
 
   runner-3:
@@ -49,9 +49,9 @@ services:
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
-    depends_on:
-      - git-proxy
+    #  - GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    #depends_on:
+    #  - git-proxy
     restart: unless-stopped
 
   runner-4:
@@ -64,9 +64,9 @@ services:
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
-    depends_on:
-      - git-proxy
+    #  - GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    #depends_on:
+    #  - git-proxy
     restart: unless-stopped
 
   runner-5:
@@ -79,9 +79,9 @@ services:
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
-    depends_on:
-      - git-proxy
+    #  - GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    #depends_on:
+    #  - git-proxy
     restart: unless-stopped
 
   runner-6:
@@ -94,9 +94,9 @@ services:
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
-    depends_on:
-      - git-proxy
+      #- GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    #depends_on:
+   #   - git-proxy
     restart: unless-stopped
 
   runner-7:
@@ -109,9 +109,9 @@ services:
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
-    depends_on:
-      - git-proxy
+    #  - GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
+    #depends_on:
+    #  - git-proxy
     restart: unless-stopped
 
 volumes:

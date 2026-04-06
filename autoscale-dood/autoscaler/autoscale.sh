@@ -107,7 +107,7 @@ create_runner() {
     -e "LABELS=${RUNNER_LABELS}" \
     -e ACCESS_TOKEN="${GH_TOKEN}" \
     -e RUNNER_WORKDIR="${workdir}" \
-    -e GIT_CONFIG_PARAMETERS="'url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'" \
+    -e GIT_CONFIG_PARAMETERS="'url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'" \
     "${RUNNER_IMAGE}" > /dev/null
 }
 

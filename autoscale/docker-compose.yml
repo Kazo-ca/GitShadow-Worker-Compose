@@ -19,7 +19,7 @@ services:
       - RANDOM_RUNNER_SUFFIX=true
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+      - GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
     depends_on:
       - git-proxy
     restart: unless-stopped

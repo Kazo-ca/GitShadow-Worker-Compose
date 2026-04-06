@@ -20,7 +20,7 @@ services:
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
       - RUNNER_WORKDIR=/tmp/runner/runner-1
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+      - GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/runner/runner-1:/tmp/runner/runner-1
@@ -39,7 +39,7 @@ services:
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
       - RUNNER_WORKDIR=/tmp/runner/runner-2
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+      - GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/runner/runner-2:/tmp/runner/runner-2
@@ -58,7 +58,7 @@ services:
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
       - RUNNER_WORKDIR=/tmp/runner/runner-3
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+      - GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/runner/runner-3:/tmp/runner/runner-3
@@ -77,7 +77,7 @@ services:
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
       - RUNNER_WORKDIR=/tmp/runner/runner-4
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+      - GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/runner/runner-4:/tmp/runner/runner-4
@@ -96,7 +96,7 @@ services:
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
       - RUNNER_WORKDIR=/tmp/runner/runner-5
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+      - GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/runner/runner-5:/tmp/runner/runner-5
@@ -115,7 +115,7 @@ services:
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
       - RUNNER_WORKDIR=/tmp/runner/runner-6
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+      - GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/runner/runner-6:/tmp/runner/runner-6
@@ -134,7 +134,7 @@ services:
       - LABELS=${RUNNER_LABELS:-tower,linux}
       - ACCESS_TOKEN=${GH_TOKEN}
       - RUNNER_WORKDIR=/tmp/runner/runner-7
-      - GIT_CONFIG_PARAMETERS='url.http://git-proxy:8080/github.com/.insteadOf=https://github.com/'
+      - GIT_CONFIG_PARAMETERS='url.http://x-access-token:${GH_TOKEN}@git-proxy:8080/github.com/.insteadOf=https://github.com/'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/runner/runner-7:/tmp/runner/runner-7
